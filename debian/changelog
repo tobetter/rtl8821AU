@@ -1,0 +1,6 @@
+rtl8821au (5.8.2.3) unstable; urgency=medium
+
+  * New Wifi driver update
+    https://github.com/morrownr/8821au.git
+
+ -- Dongjin Kim <tobetter@gmail.com>  Sun, 04 Jul 2021 22:04:21 +0900
