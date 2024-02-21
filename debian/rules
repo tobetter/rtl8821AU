@@ -20,6 +20,7 @@ override_dh_auto_install:
 	dh_install -prtl8821au-dkms -X.o -X.ko include/    usr/src/rtl8821au-$(VERSION)
 	dh_install -prtl8821au-dkms Makefile               usr/src/rtl8821au-$(VERSION)
 	dh_install -prtl8821au-dkms dkms.conf              usr/src/rtl8821au-$(VERSION)
+	dh_install -prtl8821au-dkms dkms-make.sh           usr/src/rtl8821au-$(VERSION)
 	install -d $(XDIR)/debian
 	cd debian && install rules.m-a ../$(XDIR)/debian/rules && cp -r *modules.in* changelog copyright compat *_KVERS_* ../$(XDIR)/debian/
 	cd debian/rtl8821au-src/usr/src && cp -a ../../../rtl8821au-dkms/usr/src/rtl8821au-$(VERSION)/* modules/rtl8821au-src/ && XZ_OPT=-9 tar --xz -c -f rtl8821au.tar.xz modules && rm -rf modules
