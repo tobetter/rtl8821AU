@@ -1,0 +1,29 @@
+From 907e66d7b2883c033e97c3b3bc3716265fa13f60 Mon Sep 17 00:00:00 2001
+From: Dongjin Kim <tobetter@gmail.com>
+Date: Sat, 16 Mar 2024 15:45:49 +0000
+Subject: [PATCH] Fix compile error, 'kernel_<write|read>' and 'flip_open'
+
+uses symbol kernel_write from namespace VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver
+uses symbol kernel_read from namespace VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver
+uses symbol filp_open from namespace VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver
+
+Signed-off-by: Dongjin Kim <tobetter@gmail.com>
+---
+ os_dep/osdep_service.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/os_dep/osdep_service.c b/os_dep/osdep_service.c
+index 7779ac9..42fb725 100644
+--- a/os_dep/osdep_service.c
++++ b/os_dep/osdep_service.c
+@@ -27,6 +27,7 @@ atomic_t _malloc_size = ATOMIC_INIT(0);
+ #endif
+ #endif /* DBG_MEMORY_LEAK */
+ 
++MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);
+ 
+ #if defined(PLATFORM_LINUX)
+ /*
+-- 
+2.34.1
+
